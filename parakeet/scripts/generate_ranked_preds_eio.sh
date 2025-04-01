@@ -1,10 +1,10 @@
 #!/bin/zsh
 LCA_TYPE="eio"
-ACTIVITY_FILE="../data/raw/parakeet_austin.csv"
+ACTIVITY_FILE="../data/raw/test_data.csv"
 ACTIVITY_COL="['COMMODITY_DESCRIPTION']"
-OUTPUT_FILE="../data/predictions/parakeet_austin_preds"
-export AWS_PROFILE="AWS_Account_Name" 
-export AWS_REGION="AWS_Region" 
+OUTPUT_FILE="../data/predictions/test_results"
+export AWS_PROFILE="ParakeetUser" 
+export AWS_REGION="us-east-1" 
 
 
 
