@@ -397,3 +397,6 @@ def get_cached_embedding(eco_ref, embedding):
         )
         torch.save(eco_ref_embedding, cache_file)
     return semantic_text_model, eco_ref_embedding
+
+def test():
+    return "Test"
