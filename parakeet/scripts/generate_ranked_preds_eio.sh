@@ -2,7 +2,7 @@
 LCA_TYPE="eio"
 ACTIVITY_FILE="../data/raw/test_data.csv"
 ACTIVITY_COL="['COMMODITY_DESCRIPTION']"
-OUTPUT_FILE="../data/predictions/test_results"
+OUTPUT_FILE="../data/predictions/parakeet_eio_preds"
 export AWS_PROFILE="ParakeetUser" 
 export AWS_REGION="us-east-1" 
 

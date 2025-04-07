@@ -5,3 +5,5 @@ __pycache__
 outputs/
 venv
 .python-version
+parakeet/data/predictions/*
+parakeet/data/predictions/*

@@ -328,7 +328,7 @@ def main(
                 
                 best_naics_code = naics_response[0]["naics_code"]
 
-                best_naics = eco_df[eco_df["naics_code"] == best_naics_code]
+                best_naics = eco_df[eco_df["naics_code"] == str(best_naics_code)]
                 if best_naics.empty:
                     logger.warning(f"No NAICS found for {best_naics_code}")
                     if not no_progress_bar:

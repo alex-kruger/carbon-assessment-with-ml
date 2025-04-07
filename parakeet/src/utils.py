@@ -201,7 +201,9 @@ def get_naics_data(
     )
     logger.info(f"Loaded {useeio_df.shape[0]} rows from {useeio_file}")
 
-    naics_df = pd.read_excel(naics_file)
+    naics_file = "naics_index.csv"
+    naics_df = pd.read_csv(naics_file)
+    logger.info(f"successfully read naics excel. Now, renaming some columns...")
     naics_df = naics_df.rename(
         columns={
             "NAICS17": "naics_code",
@@ -209,6 +211,13 @@ def get_naics_data(
         }
     )
     logger.info(f"Loaded {naics_df.shape[0]} rows from {naics_file}")
+    logger.info(f"naics_df shape: {naics_df.shape}")
+    logger.info(f"useeio_df shape: {useeio_df.shape}")
+    logger.info(f"naics_df['naics_code'] dtype: {naics_df['naics_code'].dtype}")
+    logger.info(f"useeio_df['naics_code'] dtype: {useeio_df['naics_code'].dtype}")
+    logger.info(f"Converting the 'naics_code' column in both dataframes to strings") # this may be a mistake
+    naics_df['naics_code'] = naics_df['naics_code'].astype(str)
+    useeio_df['naics_code'] = useeio_df['naics_code'].astype(str)
     naics_df = naics_df.merge(useeio_df, on="naics_code", how="left").dropna()
     naics_df = naics_df.groupby("naics_desc").first().reset_index()
     logger.info(f"Final shape after merge on naics_code: {naics_df.shape}")
