@@ -7,3 +7,4 @@ venv
 .python-version
 parakeet/data/predictions/*
 parakeet/data/predictions/*
+.vscode

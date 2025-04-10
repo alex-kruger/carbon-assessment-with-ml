@@ -180,7 +180,7 @@ def get_ecoinvent_data(ecoinvent_file="https://19913970.fs1.hubspotusercontent-n
 
 def get_naics_data(
     useeio_file="https://pasteur.epa.gov/uploads/10.23719/1528686/SupplyChainGHGEmissionFactors_v1.2_NAICS_CO2e_USD2021.csv",
-    naics_file="https://www.census.gov/naics/2017NAICS/2017_NAICS_Index_File.xlsx",
+    naics_file="../data/naics_index.csv",
 ):
     useeio_df = pd.read_csv(useeio_file)
     useeio_df = useeio_df[
@@ -201,7 +201,6 @@ def get_naics_data(
     )
     logger.info(f"Loaded {useeio_df.shape[0]} rows from {useeio_file}")
 
-    naics_file = "naics_index.csv"
     naics_df = pd.read_csv(naics_file)
     logger.info(f"successfully read naics excel. Now, renaming some columns...")
     naics_df = naics_df.rename(
@@ -397,6 +396,3 @@ def get_cached_embedding(eco_ref, embedding):
         )
         torch.save(eco_ref_embedding, cache_file)
     return semantic_text_model, eco_ref_embedding
-
-def test():
-    return "Test"
