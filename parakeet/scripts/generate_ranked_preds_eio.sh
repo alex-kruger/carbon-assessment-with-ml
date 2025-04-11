@@ -1,6 +1,6 @@
 #!/bin/zsh
 LCA_TYPE="eio"
-ACTIVITY_FILE="../data/raw/test_data.csv"
+ACTIVITY_FILE="../data/raw/api_eio_input.csv"
 ACTIVITY_COL="['COMMODITY_DESCRIPTION']"
 OUTPUT_FILE="../data/predictions/parakeet_eio_preds"
 NAICS_FILE="../data/naics_index.csv"

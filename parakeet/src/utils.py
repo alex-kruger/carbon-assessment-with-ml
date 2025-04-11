@@ -386,7 +386,7 @@ def get_cached_embedding(eco_ref, embedding):
     cache_file = f"/tmp/{cache_id}.pt"
     if os.path.exists(cache_file):
         logger.info("Loading cached embeddings")
-        eco_ref_embedding = torch.load(cache_file)
+        eco_ref_embedding = torch.load(cache_file, weights_only=False)
     else:
         logger.info("Encoding embedding")
         eco_ref_embedding = semantic_text_model.encode(
