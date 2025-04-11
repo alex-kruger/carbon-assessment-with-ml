@@ -131,3 +131,4 @@ yarl==1.12.0
 langchain-aws==0.1.7
 cohere-aws==0.8.16
 awscli==1.33.9
+Flask

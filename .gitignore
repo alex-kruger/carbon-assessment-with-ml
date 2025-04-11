@@ -6,5 +6,6 @@ outputs/
 venv
 .python-version
 parakeet/data/predictions/*
-parakeet/data/predictions/*
+parakeet/data/raw/*
 .vscode
+.env

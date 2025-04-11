@@ -1,0 +1,23 @@
+services:
+  parakeet:
+    build:
+      context: ./parakeet
+      dockerfile: Dockerfile
+    container_name: parakeet
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      - ~/.aws:/root/.aws:ro
+      - ./parakeet/data:/parakeet/data
