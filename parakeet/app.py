@@ -172,12 +172,16 @@ def generate_predictions(lca_type: LCAType):
             "traceback": traceback.format_exc()
         }), 500
 
+@app.route("/healthcheck", methods=["GET"])
+def health_check():
+    return jsonify({"status": "ok", "message": "Parakeet API is running."}), 200
+
 @app.route('/eio', methods=['POST'])
-def generate_eio_predictions_many():
+def generate_eio_predictions():
     return generate_predictions(LCAType.EIO)
 
 @app.route('/process', methods=['POST'])
-def generate_process_predictions_many():
+def generate_process_predictions():
     return generate_predictions(LCAType.PROCESS)
 
 if __name__ == '__main__':
