@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import sys
 import subprocess
@@ -7,6 +8,16 @@ import json
 import pandas as pd
 
 app = Flask(__name__)
+
+CORS(app, resources={r"/*": {
+    "origins": [
+        "https://iecdatatest.indecon.com",
+        "https://iecdata.indecon.com",
+        "http://localhost:*"
+    ],
+    "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"]
+}})
 
 from enum import Enum
 class LCAType(Enum):
