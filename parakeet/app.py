@@ -128,6 +128,11 @@ def generate_predictions(lca_type: LCAType):
         if request.args.get("verbose", "").lower() == "true":
             cmd.append("--verbose")
             
+        with open(output_path.with_suffix(".csv"), 'w') as file:
+            pass # Empty the csv output file
+        with open(jsonl_output_path, 'w') as file:
+            pass # Empty the jsonl output file
+
         # Execute the command
         print(f"Executing command: {' '.join(cmd)}")
         result = subprocess.run(
@@ -147,7 +152,7 @@ def generate_predictions(lca_type: LCAType):
                 "stdout": result.stdout,
                 "command": ' '.join(cmd)
             }), 500
-        
+
         results = []
         
         try:
@@ -194,6 +199,12 @@ def generate_eio_predictions():
 @app.route('/process', methods=['POST'])
 def generate_process_predictions():
     return generate_predictions(LCAType.PROCESS)
+
+@app.route('/', defaults={'path': ''}, methods=['OPTIONS'])
+@app.route('/<path:path>', methods=['OPTIONS'])
+def handle_options(path):
+    response = app.make_default_options_response()
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
