@@ -1,3 +1,36 @@
+# Instructions for API usage (IEc)
+## Prerequisites
+- Hardware: You'll probably need a fairly powerful GPU to run this model. I've run this project on my Macbook Pro with an M4 chip, and on a g4dn.xlarge AWS EC2 instance. Note that the docker-compose.yml file is currently configured for an nvidia GPU, so you may need to modify it for your own machine.
+- AWS: You need an AWS account with Bedrock. Then, configure your local .aws/credentials file to access this user, which you should call 'ParakeetUser'. See instructions below for more details.
+- Docker and docker compose: Any recent version of docker should work. Versions 27.5.1 and 28.0.4 have worked for me. https://docs.docker.com/desktop/
+- Python and conda: This project uses python 3.11 and conda. Installing miniconda3-3.11-24.11.1-0 from https://repo.anaconda.com/miniconda/ is the easiest way to get everything in one package. You can also install this with pyenv if you need to isolate this python version from other projects.
+
+## Run with Docker
+- cd path-to-project/carbon-assessment-with-ml/
+  - change directory to our project
+- docker compose build
+  - build the project image
+- docker compose up -d
+  - start the project container
+- docker ps -a
+  - check that your container is running and healthy
+- docker logs --follow parakeet
+  - get a live feed of container logs
+
+## Setup for local development
+- cd path-to-project/carbon-assessment-with-ml/parakeet/
+  - change directory to our project
+- conda create --name parakeetenv python=3.11.7
+  - create conda environment to isolate this project
+- conda activate parakeetenv
+  - activate the environment we just created
+- pip install -r requirements.txt
+  - install all dependencies for this project
+- flask --app app.py run
+  - run the API
+
+# Original Instructions from Amazon Science
+
 ## Carbon assessment with machine learning
 This code repository presents a machine learning based method for selection of an Environmental Impact Factor (EIF) for a given product, material, or activity, which is a fundamental step of carbon footprinting. The code documents the methods in the following research papers.
 
